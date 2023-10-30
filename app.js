@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path')
-const morgan = require('morgan')
+    // const morgan = require('morgan')
     // const helmet = require('helmet');
 const https = require('https')
 const fs = require('fs')
@@ -37,7 +37,7 @@ const contactModels = require('./models/contactModels')
 
 
 app.use(express.json());
-app.use(morgan('combined')) // morgan
+// app.use(morgan('combined')) // morgan
 app.use(express.static(path.join(__dirname, 'public/Html')))
 app.use('/expense', expenseRoutes)
 app.use('/user', userRoutes)
