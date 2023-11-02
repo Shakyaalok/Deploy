@@ -73,7 +73,7 @@ fileDownloadModels.belongsTo(userModels)
 // queryDownloads
 userModels.hasMany(contactModels);
 contactModels.belongsTo(userModels)
-
+console.log('nothing')
 
 
 sequelize
