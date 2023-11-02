@@ -5,6 +5,7 @@ const path = require('path')
     // const helmet = require('helmet');
 const https = require('https')
 const fs = require('fs')
+const cors = require('cors')
 
 // dotenv configure
 require('dotenv').config()
@@ -35,7 +36,7 @@ const fileDownloadModels = require('./models/previousdownloadModels');
 const contactModels = require('./models/contactModels')
 
 
-
+app.use(cors())
 app.use(express.json());
 // app.use(morgan('combined')) // morgan
 app.use(express.static(path.join(__dirname, 'public/Html')))

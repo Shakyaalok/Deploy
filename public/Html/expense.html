@@ -26,17 +26,13 @@
             <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                 <div class="offcanvas-header" style="border-bottom: 1px solid #940B92;">
                     <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">ExpenseApp</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" style="margin-right: 1.5rem;" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 d-flex align-items-center gap-2 m-2">
                         <li class="nav-item">
                             <a class="nav-link  text-white p-2 rounded" aria-current="page" href="/index.html">Home</a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link text-white  p-2 rounded" href="/about.html">About</a>
-                        </li> -->
-
                         <li class="nav-item">
                             <a class="nav-link text-white  p-2 rounded" href="/contact.html">Contact</a>
                         </li>
@@ -61,15 +57,10 @@
             </div>
         </div>
     </nav>
-    <div>
-        <h1>d</h1>
-    </div>
-
-
 
 
     <div class="container sectionform">
-        <div class="row form" style="margin-top: 60px;">
+        <div class="row form">
             <h2 class="text-center mb-4">Add your expense</h2>
             <h3 id="MsgTop"></h3>
             <form>
@@ -122,6 +113,7 @@
 
     </div>
 
+
     <div class="container sectionExpense">
         <h3 class="text-center mb-3">Your expense</h3>
         <input type="hidden" id="currentPageValue"><input type="hidden" id="totalPageValue">
@@ -131,7 +123,7 @@
 
 
 
-    <div class="container">
+    <div class="container pagination-section">
         <div id="expense-list" class="mt-4"></div>
         <nav aria-label="..." class="d-flex justify-content-end mt-4">
             <ul class="pagination" id="pagination">
@@ -152,9 +144,7 @@
 
     <!-- showing the content on button click or dom loaded -->
     <div class="container" id="toptopleaderBoardHeading"></div>
-    <div class="container" id="showreportondom">
-
-    </div>
+    <div class="container" id="showreportondom"></div>
 
 
 
@@ -164,32 +154,23 @@
     <!-- footer -->
     <div class="footer">
         <div class="row" id="footer">
-
             <div class="col-md-8">
-
-                <h4>Plot: 35 </h4>
-                <h4>Area: Chappraula Gautam Buddha Nagar</h4>
-                <h4>Pincode: 201009 </h4>
-                <h4>State/District: Gautam Buddha Nagar</h4>
-
+                <h4>Address</h4>
+                <p>35, Krishnaparam Second Village, Chappraula Gautam Buddha Nagar, 201009</p>
             </div>
             <div class="col-md-4" id="right-footer">
-                <h4>ph No: 888XXX888X</h4>
+                <p>Contact : 7678345892</p>
             </div>
         </div>
 
         <!-- sub-footer -->
         <div id="sub-footer">
             <div class="row">
-                <div class="col-md-12" style="margin-top: 6px;">
-                    <p>2023@ copyright reserved</p>
-                </div>
+                <p>2023@ copyright reserved</p>
             </div>
         </div>
 
     </div>
-
-
 
 
 
@@ -223,7 +204,7 @@
                 .then((response) => {
                     // console.log(response.data);
                     // console.log(response, response.headers.date)
-                    // showExpense(response.data.expense)
+                    showExpense(response.data.expense)
                     showMsgOnTop(response.data.message)
                 })
                 .catch((err) => console.log('error in expense.js file', err))
@@ -341,7 +322,7 @@
                 document.getElementById('buypremium').classList.add('cursor')
                 document.getElementById('buypremium').style.display = 'none';
                 document.getElementById('premiumParent-1').innerHTML = '<h4>Premium</h4>';
-                //show leaderBoard-section after purchasing
+                //show leaderBoard-section after purchasing  
                 document.getElementById('premiumParent-2').innerHTML = `<div class="nav-link rounded p-2 fw-bold text-white cursor" style="background-color:#940B92;" onclick="showleaderBoard()"  id="leaderBoard">LeaderBoard</div>`
                 document.getElementById('toptopleaderBoardHeading').innerHTML = `<h3 class="text-center mb-3 cursor" id="headingofleaderboard">LeaderBoard</h3>
         <div class="row" id="showLeaderBoard"></div>`
@@ -499,6 +480,10 @@
                             document.getElementById('buypremium').classList.add('cursor')
                             document.getElementById('buypremium').style.display = 'none';
                             document.getElementById('premiumParent-1').innerHTML = '<h4>Premium</h4>';
+                            //show leaderBoard-section after purchasing  
+                            document.getElementById('premiumParent-2').innerHTML = `<div class="nav-link rounded p-2 fw-bold text-white cursor" style="background-color:#940B92;" onclick="showleaderBoard()"  id="leaderBoard">LeaderBoard</div>`
+                            document.getElementById('toptopleaderBoardHeading').innerHTML = `<h3 class="text-center mb-3 cursor" id="headingofleaderboard">LeaderBoard</h3>
+        <div class="row" id="showLeaderBoard"></div>`
                             document.getElementById('premiumParent-3').innerHTML = `<div class="nav-link rounded cursor" onclick="downloadReport()" id="downloadreport"><i class="fa-solid fa-download"></i></div>`;
                             document.getElementById('premiumParent-4').innerHTML = `<button   type="button" class="rounded btn btn-success fw-bold text-white border-0"  style="background-color:#940B92;" onclick="showReport()" id="showreport">Previous Download</button>`
                             document.getElementById('showreportondom').innerHTML = `<h3 class="text-center">Previous Dowloaded History</h3>
@@ -542,35 +527,58 @@
                 })
                 .then((response) => {
                     // console.log(response)
-                    let count = 0;
-                    for (const item of response.data) {
-
-                        printLeaderBoardOnDom(item, count++)
-                    }
+                    // let count = 0;
+                    printLeaderBoardOnDom(response.data)
+                        // for (const item of response.data) {
+                        //     printLeaderBoardOnDom(item, count++)
+                        // }
 
 
 
                 })
         }
 
-        function printLeaderBoardOnDom(DETAILS, rank) {
+        function printLeaderBoardOnDom(DETAILS) {
+
+            // problem in this appending method generally for every when there is a loop then someone click on the button it append all the previous item as well so we try below method
+            //     const heading = document.getElementById('showLeaderBoard');
+            //     heading.innerHTML = ''
+            //     const Div = document.createElement('div');
+            //     Div.classList.add('col-lg-4', 'col-md-6', 'col-sm-12', 'mb-4')
+            //     Div.innerHTML = `
+
+
+            //     <div class="card d-flex flex-wrap gap-1 p-2 text-white shadow" style="width: 18rem;  background: #3b1557;" >
+            //         <div class="text-success" style="font-size:20px;">Rank: ${rank+1} </div>   
+            //                 <div> Name: ${DETAILS.name} </div>
+            //                 <div>Total Expense: ${DETAILS.totalExpenses} </div>            
+
+            //                 <div>
+            //         </div>
+            //     </div>
+            // `;
+            //     heading.appendChild(Div)
 
             const heading = document.getElementById('showLeaderBoard');
-            const Div = document.createElement('div');
-            Div.classList.add('col-lg-4', 'col-md-6', 'col-sm-12', 'mb-4')
-            Div.innerHTML = `
-
-            
-            <div class="card d-flex flex-wrap gap-1 p-2 text-white shadow" style="width: 18rem;  background: #3b1557;" >
+            heading.innerHTML = ''
+            let rank = 0;
+            for (const lead of DETAILS) {
+                const Div = document.createElement('div');
+                Div.classList.add('col-lg-3', 'col-md-6', 'mb-4', 'card-center')
+                Div.innerHTML = `
+               <div class="card d-flex flex-wrap gap-2 p-2 text-white shadow" style="width: 18rem;  background: #3b1557;" >
                 <div class="text-success" style="font-size:20px;">Rank: ${rank+1} </div>   
-                        <div> Name: ${DETAILS.name} </div>
-                        <div>Total Expense: ${DETAILS.totalExpenses} </div>            
+                        <div> Name: ${lead.name} </div>
+                        <div>Total Expense: ${lead.totalExpenses} </div>            
                                 
                         <div>
                 </div>
             </div>
         `;
-            heading.appendChild(Div)
+                rank++;
+                heading.appendChild(Div)
+            }
+
         }
 
         // show premium after purchasing
@@ -630,17 +638,20 @@
             ExistingElement.innerHTML = '';
             const Div = document.createElement('div');
             Div.innerHTML = ` 
-            <div class="card flex-wrap gap-4 p-2 text-success shadow cardStyle" style="background: #3b1557;" id="target_${details.id}">
-                <span> Product Name: <span  class="cardStyle-color">${details.productName}</span> </span>
-                <span> Product Price: <span  class="cardStyle-color">${details.productPrice}</span> </span>
-                <span> Product Category: <span  class="cardStyle-color">${details.productCategory}</span> </span>
-                <span> Remarks: <span  class="cardStyle-color">${details.remarks}</span> </span>
-                <div>
-                    <div class="position-absolute top-0 end-0 text bg-danger p-2 text-white rounded m-0" type="button" onclick="deletee('${details.id}')">X</div>
+                <div class="card flex-wrap gap-4 p-2 text-success shadow cardStyle" style="background: #3b1557;" id="target_${details.id}">
+                    <span> Product Name: <span  class="cardStyle-color">${details.productName}</span> </span>
+                    <span> Product Price: <span  class="cardStyle-color">${details.productPrice}</span> </span>
+                    <span> Product Category: <span  class="cardStyle-color">${details.productCategory}</span> </span>
+                    <span> Remarks: <span  class="cardStyle-color">${details.remarks}</span> </span>
+                    <div>
+                        <div class="position-absolute top-0 end-0 text bg-danger p-2 text-white rounded m-0" type="button" onclick="deletee('${details.id}')">X</div>
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
             ExistingElement.appendChild(Div);
+
+
+
 
         }
     </script>

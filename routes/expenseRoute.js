@@ -12,13 +12,4 @@ router.delete('/delete/:id', deleteExpense)
 router.post('/add', addExpense)
 
 
-
-
-
-
-
-
-
-
-
 module.exports = router;

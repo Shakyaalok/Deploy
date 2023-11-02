@@ -9,10 +9,35 @@ body {
 }
 
 
+/* added */
+
+.offcanvas-end {
+    top: 0;
+}
+
+.navbar {
+    position: relative;
+}
+
+.offcanvas-body {
+    padding: 1rem;
+}
+
+.form {
+    width: 100%;
+}
+
+
+/* end addded */
+
+
 /* mid-section */
 
 
 /* hero-img */
+
+
+/* added from chatgpt */
 
 #hero-row {
     min-height: fit-content;
@@ -51,15 +76,24 @@ body {
 
 .footer {
     background: #610C9F;
+    height: 100%;
 }
 
 .footer>div>div {
     padding: 1rem 2rem;
 }
 
-.footer h4 {
+.footer p,
+h4 {
     color: white;
     padding: 0rem 1rem;
+}
+
+.footer p {
+    color: white;
+    padding: 0rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 #right-footer {
@@ -72,12 +106,25 @@ body {
 
 #sub-footer {
     background: #940B92;
+    padding: 0.5rem 0;
+    margin: 0;
+    text-align: center;
 }
 
-#sub-footer>div>div>p {
+#sub-footer>div {
+    background: #940B92;
+    margin: 0;
+    padding: 0;
+}
+
+#sub-footer p {
     text-align: center;
     color: white;
+    margin: 0;
+    font-size: 1rem;
 }
+
+#custom-footer-login {}
 
 .form {
     padding: .9rem 0.4rem;
@@ -115,7 +162,7 @@ body {
 /* pagination */
 
 .pagination {
-    margin-left: 0;
+    /* margin-left: 0; */
     cursor: pointer;
 }
 
@@ -148,6 +195,16 @@ input:invalid:not(:focus):not(:placeholder-shown)~.error {
 #btn-login {
     font-size: 1.2rem;
     font-weight: 600;
+    width: 100%;
+}
+
+.login-forget {
+    display: flex;
+    gap: 2rem;
+}
+
+.login-forget>p {
+    position: relative;
 }
 
 .Question span {
@@ -156,10 +213,6 @@ input:invalid:not(:focus):not(:placeholder-shown)~.error {
 
 .Question>a {
     color: white;
-}
-
-.Question>a:hover {
-    padding: 5px 0;
 }
 
 
@@ -186,6 +239,13 @@ ul li a:hover {
 
 .login_singup div a:hover {
     background-color: #940B92;
+}
+
+
+/* offcanvasDarkNavbar */
+
+#offcanvasDarkNavbar {
+    width: 75%;
 }
 
 
@@ -289,6 +349,11 @@ ul li a:hover {
     top: 0;
 }
 
+.pagination-section {
+    position: relative;
+    top: 0;
+}
+
 
 /* pageBtn */
 
@@ -299,10 +364,11 @@ ul li a:hover {
 }
 
 .pageTypeNum {
-    width: 29%;
+    /* width: 29%; */
     background: rebeccapurple;
     color: white;
     font-size: 1.2rem;
+    width: 50%;
 }
 
 .pageTypeNum:hover {
@@ -312,15 +378,10 @@ ul li a:hover {
 
 /* footer */
 
-#footer>div h4,
-#right-footer {
-    font-size: 1rem;
-}
-
 .sectionform {
-    position: relative;
-    left: 4%;
     width: 50%;
+    margin: 10% auto;
+    margin-bottom: 5%;
 }
 
 .sectionform h2 {
@@ -345,14 +406,19 @@ form .dropdown label option:nth-child(1) {
 
 @media screen and (max-width:970px) {
     .sectionform {
-        width: 90%;
+        margin: 0 auto;
+        width: 100%;
+    }
+    #sectionform {
+        margin-top: 30%;
+        margin-bottom: 20%;
     }
     .form {
         margin: 2rem auto;
         width: 90%;
     }
     #btn-add-expense {
-        /* width: 50%; */
+        width: 50%;
     }
     .sectionform h2 {
         font-size: 1.3rem;
@@ -360,33 +426,71 @@ form .dropdown label option:nth-child(1) {
     #hero-img {
         min-height: 771px;
     }
+    #btn-login {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    .pagination-section {
+        margin: 0 auto;
+    }
+    .pageTypeNum {
+        width: 50%;
+    }
+    .card-center {
+        margin: auto;
+        width: 50%;
+    }
 }
 
 @media screen and (max-width:600px) {
-    .form {
-        width: 90%;
-    }
-    .footer {
-        width: 129%;
-    }
-    .pagination {
-        margin-left: 7rem;
+    .pagination-section {
+        margin: 0 auto;
     }
     .pageTypeNum {
-        width: 76%;
+        width: 50%;
     }
     .sectionExpense {
-        left: 10%;
-        width: 108%;
+        margin: 0 auto;
+    }
+    .pagination-section {
+        top: 20%;
     }
     .cardStyle {
         gap: 0rem;
     }
     .sectionform {
-        left: 4%;
-        width: 120%;
+        margin: 0 auto;
+        /* margin-top: 30%; */
+        /* margin-bottom: 20%; */
+        width: 100%;
+    }
+    #sectionform {
+        margin-top: 30%;
+        margin-bottom: 20%;
     }
     #hero-img {
         max-height: 500px;
+    }
+    #btn-login {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    .login-forget {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+    }
+    /* added */
+    .offcanvas-end {
+        width: 100%;
+    }
+    #custom-footer-login {
+        position: absolute;
+        top: 80%;
+        height: 23%;
+    }
+    .card-center {
+        margin: auto;
+        width: 57%;
     }
 }
